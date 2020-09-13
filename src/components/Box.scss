@@ -1,0 +1,28 @@
+.box {
+  position: relative;
+  border: 0.188rem solid white;
+  font-size: 5.625rem;
+  background: none;
+  color: white;
+  height: 9.375rem;
+}
+
+// Top Row
+.box:nth-child(-n+3) {
+  border-top: none;
+}
+
+// Bottom Row
+.box:nth-last-child(-n+3) {
+  border-bottom: none;
+}
+
+// Left Column
+.box:nth-child(3n+1) {
+  border-left: none;
+}
+
+// Right Column
+.box:nth-child(3n) {
+  border-right: none;
+}

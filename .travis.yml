@@ -1,0 +1,26 @@
+language: node.js
+
+node_js:
+  - node
+
+sudo: false
+
+cache: npm
+
+install:
+  - npm install
+
+script:
+  - npm test
+  - npm run build
+
+deploy:
+  provider: pages
+  local_dir: build
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  on:
+    branch: master
+
+notifications:
+  email: false
