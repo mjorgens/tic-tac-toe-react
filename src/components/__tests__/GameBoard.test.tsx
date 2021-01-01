@@ -1,17 +1,17 @@
 import React from 'react';
-import GameBoard, {Props} from '../GameBoard';
-import {render, fireEvent, screen} from '@testing-library/react';
-import {act} from "react-dom/test-utils";
+import GameBoard, { Props } from '../GameBoard';
+import { render, fireEvent, screen } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 
-function renderGameBoard(props: Partial<Props> = {}) {
+const renderGameBoard = (props: Partial<Props> = {}) => {
     const defaultProps: Props = {
         resetGame() {
             return;
-        }
+        },
     };
 
-    return render(<GameBoard {...defaultProps} {...props}/>);
-}
+    return render(<GameBoard {...defaultProps} {...props} />);
+};
 
 jest.useFakeTimers();
 
@@ -94,7 +94,7 @@ describe('<GameBoard />', () => {
         test('play again button is not visible when no winner', () => {
             renderGameBoard();
 
-            expect(screen.queryByRole('button', {name: /Play Again/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('button', { name: /Play Again/i })).not.toBeInTheDocument();
         });
 
         test('play again button is visible when there is a win', () => {
@@ -105,19 +105,19 @@ describe('<GameBoard />', () => {
                 fireEvent.click(boxes[i]);
             }
 
-            expect(screen.getByRole('button', {name: /Play Again/i})).toBeInTheDocument();
+            expect(screen.getByRole('button', { name: /Play Again/i })).toBeInTheDocument();
         });
 
         test('resetGame is called when play again button is clicked', () => {
             const resetGame = jest.fn();
-            renderGameBoard({resetGame});
+            renderGameBoard({ resetGame });
             const boxes = screen.getAllByRole('button');
 
             for (let i = 0; i < 7; i++) {
                 fireEvent.click(boxes[i]);
             }
 
-            fireEvent.click(screen.getByRole('button', {name: /Play Again/i}));
+            fireEvent.click(screen.getByRole('button', { name: /Play Again/i }));
 
             expect(resetGame).toBeCalled();
         });

@@ -1,5 +1,5 @@
-import {Player} from "../../models/player";
-import {bestMove, switchPlayer, tieCheck, winnerCheck} from "../tic-tac-toe";
+import { Player } from '../../models/player';
+import { bestMove, switchPlayer, tieCheck, winnerCheck } from '../tic-tac-toe';
 
 describe('tie-tac-toe.ts', () => {
     describe('switchPlayer()', () => {
@@ -14,15 +14,23 @@ describe('tie-tac-toe.ts', () => {
 
     describe('tieCheck()', () => {
         test('should return true when board is full', () => {
-            const board: Player[] = [Player.O, Player.X, Player.O,
-                Player.X, Player.X, Player.O,
-                Player.O, Player.O, Player.X];
+            const board: Player[] = [
+                Player.O,
+                Player.X,
+                Player.O,
+                Player.X,
+                Player.X,
+                Player.O,
+                Player.O,
+                Player.O,
+                Player.X,
+            ];
 
             expect(tieCheck(board)).toBeTruthy();
         });
 
         test('should return false when board is not full', () => {
-            const board: Player [] = Array(9);
+            const board: Player[] = Array(9);
 
             expect(tieCheck(board)).toBeFalsy();
         });
@@ -30,69 +38,141 @@ describe('tie-tac-toe.ts', () => {
 
     describe('winnerCheck()', () => {
         test('should return winner on vertical win', () => {
-            const firstCol: Player [] = [Player.X, Player.O, Player.X,
-                Player.X, Player.O, Player.O,
-                Player.X, Player.X, Player.O];
+            const firstCol: Player[] = [
+                Player.X,
+                Player.O,
+                Player.X,
+                Player.X,
+                Player.O,
+                Player.O,
+                Player.X,
+                Player.X,
+                Player.O,
+            ];
 
             expect(winnerCheck(firstCol)).toBe(Player.X);
 
-            const secondCol: Player [] = [Player.O, Player.X, Player.O,
-                Player.O, Player.X, Player.X,
-                Player.X, Player.X, Player.O];
+            const secondCol: Player[] = [
+                Player.O,
+                Player.X,
+                Player.O,
+                Player.O,
+                Player.X,
+                Player.X,
+                Player.X,
+                Player.X,
+                Player.O,
+            ];
 
             expect(winnerCheck(secondCol)).toBe(Player.X);
 
-            const thirdCol: Player [] = [Player.O, Player.O, Player.X,
-                Player.O, Player.X, Player.X,
-                Player.X, Player.O, Player.X];
+            const thirdCol: Player[] = [
+                Player.O,
+                Player.O,
+                Player.X,
+                Player.O,
+                Player.X,
+                Player.X,
+                Player.X,
+                Player.O,
+                Player.X,
+            ];
 
             expect(winnerCheck(thirdCol)).toBe(Player.X);
         });
 
         test('should return winner on horizontal win', () => {
-            const firstRow: Player [] = [Player.X, Player.X, Player.X,
-                Player.X, Player.O, Player.O,
-                Player.O, Player.O, Player.X];
+            const firstRow: Player[] = [
+                Player.X,
+                Player.X,
+                Player.X,
+                Player.X,
+                Player.O,
+                Player.O,
+                Player.O,
+                Player.O,
+                Player.X,
+            ];
 
             expect(winnerCheck(firstRow)).toBe(Player.X);
 
-            const secondRow: Player [] = [Player.X, Player.O, Player.O,
-                Player.X, Player.X, Player.X,
-                Player.O, Player.O, Player.X];
+            const secondRow: Player[] = [
+                Player.X,
+                Player.O,
+                Player.O,
+                Player.X,
+                Player.X,
+                Player.X,
+                Player.O,
+                Player.O,
+                Player.X,
+            ];
 
             expect(winnerCheck(secondRow)).toBe(Player.X);
 
-            const thirdRow: Player [] = [Player.X, Player.O, Player.O,
-                Player.O, Player.O, Player.X,
-                Player.X, Player.X, Player.X];
+            const thirdRow: Player[] = [
+                Player.X,
+                Player.O,
+                Player.O,
+                Player.O,
+                Player.O,
+                Player.X,
+                Player.X,
+                Player.X,
+                Player.X,
+            ];
 
             expect(winnerCheck(thirdRow)).toBe(Player.X);
         });
 
         test('should return winner on diagonal win', () => {
-            const leftToRight: Player [] = [Player.X, Player.X, Player.O,
-                Player.O, Player.X, Player.X,
-                Player.O, Player.O, Player.X];
+            const leftToRight: Player[] = [
+                Player.X,
+                Player.X,
+                Player.O,
+                Player.O,
+                Player.X,
+                Player.X,
+                Player.O,
+                Player.O,
+                Player.X,
+            ];
 
             expect(winnerCheck(leftToRight)).toBe(Player.X);
 
-            const rightToLeft: Player [] = [Player.O, Player.O, Player.X,
-                Player.X, Player.X, Player.O,
-                Player.X, Player.O, Player.X];
+            const rightToLeft: Player[] = [
+                Player.O,
+                Player.O,
+                Player.X,
+                Player.X,
+                Player.X,
+                Player.O,
+                Player.X,
+                Player.O,
+                Player.X,
+            ];
 
             expect(winnerCheck(rightToLeft)).toBe(Player.X);
         });
 
         test('should return cat when board is tie', () => {
-            const board: Player[] = [Player.O, Player.X, Player.O,
-                Player.X, Player.X, Player.O,
-                Player.O, Player.O, Player.X];
+            const board: Player[] = [
+                Player.O,
+                Player.X,
+                Player.O,
+                Player.X,
+                Player.X,
+                Player.O,
+                Player.O,
+                Player.O,
+                Player.X,
+            ];
 
             expect(winnerCheck(board)).toBe(Player.Cat);
         });
 
         test('should return undefined when board is not full and no win', () => {
-            const board: Player [] = Array(9).fill(undefined);
+            const board: Player[] = Array(9).fill(undefined);
 
             expect(winnerCheck(board)).toBeUndefined();
         });
