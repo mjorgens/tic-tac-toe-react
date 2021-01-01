@@ -1,4 +1,4 @@
-import {Player} from "../models/player";
+import { Player } from '../models/player';
 
 /**
  * A function that check the board if there is a winner
@@ -6,7 +6,7 @@ import {Player} from "../models/player";
  * @param {Player[]} board - The board
  * @return {Player | undefined} The winner or undefined if no winner
  */
-export function winnerCheck(board: Player[]): Player | undefined {
+export const winnerCheck = (board: Player[]): Player | undefined => {
     // horizontal check
     for (let i = 0; i < board.length; i += 3) {
         if (board[i] === board[i + 1] && board[i + 1] === board[i + 2] && board[i] !== undefined) {
@@ -33,7 +33,7 @@ export function winnerCheck(board: Player[]): Player | undefined {
     }
 
     return undefined;
-}
+};
 
 /**
  * A function that check a board if there is a tie or not
@@ -41,13 +41,13 @@ export function winnerCheck(board: Player[]): Player | undefined {
  * @param {Player[]} board - The board
  * @return {boolean} If there is a tie or not
  */
-export function tieCheck(board: Player[]): boolean {
+export const tieCheck = (board: Player[]): boolean => {
     for (const e of board) {
         if (e === undefined) return false;
     }
 
     return true;
-}
+};
 
 /**
  * A function that returns the best move from the board for the inputted player
@@ -56,7 +56,7 @@ export function tieCheck(board: Player[]): boolean {
  * @param {Player} player - The player the find the move for
  * @return {number} The best move for the given player
  */
-export function bestMove(board: Player[], player: Player): number {
+export const bestMove = (board: Player[], player: Player): number => {
     let bestScore = -Infinity;
     let bestMove = 0;
     // find the maximized score for computer and best move
@@ -74,7 +74,7 @@ export function bestMove(board: Player[], player: Player): number {
     }
 
     return bestMove;
-}
+};
 
 /**
  * Minimax function for tic tac toe
@@ -84,7 +84,7 @@ export function bestMove(board: Player[], player: Player): number {
  * @param {boolean} [playerMove=false] - Player move
  * @return {number} The best score for the current board
  */
-export function minimax(board: Player[], player: Player, playerMove = false): number {
+export const minimax = (board: Player[], player: Player, playerMove = false): number => {
     const winner: Player | undefined = winnerCheck(board);
 
     // if opponent wins
@@ -130,8 +130,7 @@ export function minimax(board: Player[], player: Player, playerMove = false): nu
     }
 
     return bestScore;
-}
-
+};
 
 /**
  * Function to return the opposite player
@@ -139,6 +138,6 @@ export function minimax(board: Player[], player: Player, playerMove = false): nu
  * @param {Player} currentPlayer - the player to switch
  * @return {Player} the opposite player
  */
-export function switchPlayer(currentPlayer: Player): Player {
-    return (currentPlayer === Player.O) ? Player.X : Player.O;
-}
+export const switchPlayer = (currentPlayer: Player): Player => {
+    return currentPlayer === Player.O ? Player.X : Player.O;
+};
