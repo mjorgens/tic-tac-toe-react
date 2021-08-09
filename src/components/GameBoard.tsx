@@ -28,11 +28,9 @@ const GameBoard = (props: Props) => {
 
     const turn = (id: number, marker: Player): void => {
         setBoard((board) =>
-            board.map(
-                (item: Player, index: number): Player => {
-                    return index === id ? marker : item;
-                }
-            )
+            board.map((item: Player, index: number): Player => {
+                return index === id ? marker : item;
+            })
         );
     };
 
