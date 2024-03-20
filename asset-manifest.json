@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/tic-tac-toe-react/static/css/main.ed7bb6f8.css",
+    "main.js": "/tic-tac-toe-react/static/js/main.aeb0cb59.js",
+    "static/media/wooden_frame.jpg": "/tic-tac-toe-react/static/media/wooden_frame.58afc767a5a8b90e6b63.jpg",
+    "index.html": "/tic-tac-toe-react/index.html",
+    "main.ed7bb6f8.css.map": "/tic-tac-toe-react/static/css/main.ed7bb6f8.css.map",
+    "main.aeb0cb59.js.map": "/tic-tac-toe-react/static/js/main.aeb0cb59.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ed7bb6f8.css",
+    "static/js/main.aeb0cb59.js"
+  ]
+}
